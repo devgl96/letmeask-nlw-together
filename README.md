@@ -1,7 +1,9 @@
 # Letmeask App - NLW Together
 ## Mission Complete - Day 1
 # Sobre o primeiro dia
-    - Nesta primeira aula foi apresentado o que vai ser desenvolvido nesta semana. Uma aplicação chamada *Letmeask* que tem como objetivo ajudar no monitoramento de perguntas que são realizadas pelo público e assim, votadas e indicadas pelo host da Live, da apresentação ou ambientes similares. 
+    - Nesta primeira aula foi apresentado o que vai ser desenvolvido nesta semana. 
+    Uma aplicação chamada *Letmeask* que tem como objetivo ajudar no monitoramento de perguntas 
+    que são realizadas pelo público e assim, votadas e indicadas pelo host da Live, da apresentação ou ambientes similares. 
     - Na parte técnica foram abordados muitos assuntos que são essenciais para o desenvolvimento Web, usando React:
         * SPA (Single Page Application) e a sua diferença em relação ao desenvolvimento web de anos atrás,
         * Firebase: O motivo de ser utilizado este modelo BAAS (Backend As A Service) e quais serviços iremos utilizar => Authentication e Databases
