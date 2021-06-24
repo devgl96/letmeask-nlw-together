@@ -4,7 +4,7 @@
 - Uma aplicação chamada **Letmeask** que tem como objetivo ajudar no monitoramento de perguntas 
 que são realizadas pelo público e assim, votadas e indicadas pelo host da Live, da apresentação ou ambientes similares. 
     - Na parte técnica foram abordados muitos assuntos que são essenciais para o desenvolvimento Web, usando React:
-        [x] SPA (Single Page Application) e a sua diferença em relação ao desenvolvimento web de anos atrás,
+        - [x] SPA (Single Page Application) e a sua diferença em relação ao desenvolvimento web de anos atrás,
         [x] Firebase: O motivo de ser utilizado este modelo BAAS (Backend As A Service) e quais serviços iremos utilizar => Authentication e Databases
         [x] Iniciando um projeto React, com o comando: yarn create react-app letmeask --template typescript
         [x] Principais conceitos do React: Componentes - Propriedades - Estado 
