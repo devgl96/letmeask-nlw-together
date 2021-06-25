@@ -68,3 +68,7 @@ para fazer o link através da tag e o segundo para ser utilizado através de uma
     para assim, apresentar ao usuário que tentar entrar na sala, possa receber uma mensagem que a sala foi encerrada.
 
 ## Sobre o quinto dia
+### Nesta última aula, houve a finalização da aplicação:
+- [x] Foi desenvolvido a parte dos botões de **highlighted** e do **answered** por parte do admin, 
+- [x] E o site foi hospedado na própria plataforma *Firebase* utilizando o **Hosting**.
+- [x] Para acessar a aplicação: [LetMeAskTogether](https://letmeask-together-nlw.web.app/)
