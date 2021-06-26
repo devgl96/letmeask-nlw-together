@@ -82,5 +82,3 @@ para fazer o link através da tag e o segundo para ser utilizado através de uma
 - [x] Balão para copiar código da sala
 - [x] Perguntas listadas pela ordem de curtidas
 - [x] Modal para resposta do encerrar a sala
-- [] Criar um Dark Theme (Ver twitch relacionada a isso)
-- [] Não permitir que o usuário acesse outra rota sem está logado
