@@ -1,11 +1,15 @@
-// import { useState, FormEvent } from 'react';
-
 import { useHistory, useParams } from 'react-router-dom';
+
+import { useState } from 'react';
+
+import Modal from 'react-modal';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
+import removeImg from '../assets/images/remove.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
+import emptyQuestionsImg from '../assets/images/empty-questions.svg';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -23,7 +27,8 @@ type RoomParams = {
 };
 
 export function AdminRoom() {
-    // const { user } = useAuth();
+    const [modalIsOpen, setIsOpen] = useState(false);
+
     const history = useHistory();
 
     const params = useParams<RoomParams>();
@@ -31,6 +36,31 @@ export function AdminRoom() {
     const roomId = params.id;
     
     const { title, questions } = useRoom(roomId);
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: '#F8F8F8',
+            display: 'flex',
+        },
+    };
+
+    function handleOpenModal() {
+        setIsOpen(true);
+    }
+
+    function handleCloseModal() {
+        setIsOpen(false);
+    }
+
+    function sendToHome() {
+        history.push("/");
+    }  
 
     // End the room 
     async function handleEndRoom() {
@@ -67,10 +97,24 @@ export function AdminRoom() {
         <div id="page-room">
             <header>
                 <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <img src={logoImg} alt="Letmeask" onClick={sendToHome}/>
                     <div>
                         <RoomCode code={roomId}/>
-                        <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+                        <Button isOutlined onClick={handleOpenModal}>Encerrar sala</Button>
+                        <Modal 
+                            isOpen={modalIsOpen}
+                            onRequestClose={handleCloseModal}
+                            className="modalHandleRemove"
+                            overlayClassName="overlayHandleRemove"
+                        >
+                            <img src={removeImg} alt="Remover sala" />
+                            <h2>Encerrar sala</h2>
+                            <p>Tem certeza que você deseja encerrar esta sala?</p>
+                            <div className="chooseButton">
+                                <Button onClick={handleCloseModal}>Cancelar</Button>
+                                <Button onClick={handleEndRoom}>Sim, encerrar</Button>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
             </header>
@@ -80,42 +124,56 @@ export function AdminRoom() {
                     { questions.length > 0 && <span>{questions.length} pergunta(s)</span>}   
                 </div>
 
-                <div className="question-list">
-                    {questions.map(question => {
-                        return (
-                            <Question 
-                                key={question.id}
-                                content={question.content}
-                                author={question.author}
-                                isAnswered={question.isAnswered}
-                                isHighLighted={question.isHighLighted}
-                            >
-                                {!question.isAnswered && (
-                                    <>
-                                        <button
-                                            type="button"
-                                            onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                                        >
-                                            <img src={checkImg} alt="Marcar pergunta como respondida" />
-                                        </button>
-                                        <button
-                                            type="button"
-                                            onClick={() => handleHighlightQuestion(question.id)}
-                                        >
-                                            <img src={answerImg} alt="Dar destaque à pergunta" />
-                                        </button>
-                                    </>
-                                )}
-                                <button
-                                    type="button"
-                                    onClick={() => handleDeleteQuestion(question.id)}
+                {questions.length > 0 ? 
+                    <div className="question-list">
+                        {/* Este algoritmo mostra as questões de forma ordenada (decrescente) 
+                            da mais curtida até a sem curtida*/}
+                        {questions.sort((qa, qb) => {
+                            return (
+                                qb.likeCount - qa.likeCount
+                            );
+                        }).map(question => {
+                            return (
+                                <Question 
+                                    key={question.id}
+                                    content={question.content}
+                                    author={question.author}
+                                    isAnswered={question.isAnswered}
+                                    isHighLighted={question.isHighLighted}
                                 >
-                                    <img src={deleteImg} alt="Remover pergunta" />
-                                </button>
-                            </Question>
-                        );
-                    })}
-                </div>
+                                    {!question.isAnswered && (
+                                        <>
+                                            <button
+                                                type="button"
+                                                onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                                            >
+                                                <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => handleHighlightQuestion(question.id)}
+                                            >
+                                                <img src={answerImg} alt="Dar destaque à pergunta" />
+                                            </button>
+                                        </>
+                                    )}
+                                    <button
+                                        type="button"
+                                        onClick={() => handleDeleteQuestion(question.id)}
+                                    >
+                                        <img src={deleteImg} alt="Remover pergunta" />
+                                    </button>
+                                </Question>
+                            );
+                        })}
+                    </div>
+                :
+                    <div className="empty-questions">
+                        <img src={emptyQuestionsImg} alt="Sala sem perguntas" />
+                        <h3>Nenhuma pergunta por aqui...</h3>
+                        <p>Envie o código desta sala para seus amigos e comece a responder perguntas!</p>
+                    </div>
+                }
             </main>
         </div>
     );

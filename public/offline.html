@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Letmeask App Offline</title>
+        <style type="text/css">
+            html {
+                height: 100%;
+            }
+
+            body {
+                height: 100%;
+                margin: 0;
+                background: #835AFD;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+            }
+        
+            .no-match-container {
+                width: 20rem;
+                height: 20rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: #f3f3f3;
+                border-radius: 20px;
+            }
+
+            .no-match-container .content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .no-match-container .content img { 
+                max-width: 300px;
+                height:100%;
+            }
+
+            .no-match-container .content p {
+                margin-top: 12px;
+                color: #000;
+
+                line-height: 24px;
+                margin-bottom: 2px;
+                font-size: 1.45rem;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .no-match-container .content p>a {
+                margin-left: 4px;
+                cursor: pointer;
+                color: #e100ff;
+                text-decoration: none;
+            }
+
+            @media (min-width: 768px){
+                .no-match-container {
+                    width: 30rem;
+                    height: 16rem;
+                }
+
+                .no-match-container .content img { 
+                    width: 200px;
+
+                }
+
+                .no-match-container .content p {
+                    font: 400 1.85rem Capriola;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="no-match-container">
+            <div class="content">
+                <p>Desculpe, você está offline. Por favor, ative o Wifi ou Dados Móveis!</p>
+            </div>
+        </div>
+    </body>
+</html>

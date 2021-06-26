@@ -6,10 +6,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/icon-192x192.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Use to PWA sharing -->
+    <meta name="theme-color" content="#835AFD" />
+    <meta property="og:title" content="Letmeask App" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://letmeask-together-nlw.firebaseapp.com/" />
+    <meta property="og:image:url" content="/icons/icon-96x96.png" />
+    <meta property="og:description" content="Letmeask é um aplicativo para tirar as dúvidas da sua audiência em tempo real." />
+
     <title>Letmeask</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <script>
+      if('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceworker.js')
+          .then((reg) =>  console.log("Success: ", reg.scope))
+          .catch((err) => console.log("Failure: ", err));
+        });
+      }
+    </script>
   </body>
 </html>

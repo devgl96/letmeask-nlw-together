@@ -72,3 +72,15 @@ para fazer o link através da tag e o segundo para ser utilizado através de uma
 - [x] Foi desenvolvido a parte dos botões de **highlighted** e do **answered** por parte do admin, 
 - [x] E o site foi hospedado na própria plataforma *Firebase* utilizando o **Hosting**.
 - [x] Para acessar a aplicação: [LetMeAskTogether](https://letmeask-together-nlw.web.app/)
+
+## Trilha Extra
+- [x] Agora o criador da sala pode escolher colocar um background image usando uma url para
+      deixar a sua sala mais personalizada
+- [x] Estilizar Sala, na parte administrativa, quando está sem perguntas
+- [x] PWA
+- [x] Layout Responsivo
+- [x] Balão para copiar código da sala
+- [x] Perguntas listadas pela ordem de curtidas
+- [x] Modal para resposta do encerrar a sala
+- [] Criar um Dark Theme (Ver twitch relacionada a isso)
+- [] Não permitir que o usuário acesse outra rota sem está logado

@@ -32,6 +32,8 @@ export function useRoom(roomId: string) {
     const { user } = useAuth();
     const [questions, setQuestions] = useState<QuestionType[]>([]);
     const [title, setTitle] = useState("");
+    
+    const [background, setBackground] = useState("");
 
     // Consumindo as perguntas do Firebase
     useEffect(() => {
@@ -55,6 +57,8 @@ export function useRoom(roomId: string) {
 
             setTitle(databaseRoom.title);
             setQuestions(parsedQuestions);
+
+            setBackground(databaseRoom.background);
         });
 
         return () => {
@@ -62,5 +66,5 @@ export function useRoom(roomId: string) {
         };
     }, [roomId, user?.id]);
 
-    return {questions, title};
+    return {questions, title, background};
 }

@@ -8,22 +8,58 @@
     cursor: pointer;
 
     display: flex;
-    
+
     div {
         background: #835AFD;
-        padding: 9px 12px;
+        padding: 9px 9px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     span {
-        display: block;
-        align-self: center;
-        flex: 1;
-        padding: 0 16px 0 12px;
-        width: 220px;
-        font-size: 14px;
-        font-weight: 500;
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .room-code {
+        div {
+            padding: 9px 12px;
+        }
+    
+        span {
+            display: block;
+            align-self: center;
+            flex: 1;
+            padding: 0 16px 0 12px;
+            width: 220px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .tooptipText {
+            visibility: hidden;
+            width: 220px;
+            background-color: #835AFD;
+            color: #FFF;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            top: 7%;
+            left: 63.5%;
+            margin-left: -60px; 
+            z-index: 1;
+
+        }
+
+        &:hover {
+            .tooptipText {
+                visibility: visible;
+            }
+        }
     }
 }

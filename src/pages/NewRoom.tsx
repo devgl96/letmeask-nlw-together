@@ -22,9 +22,13 @@ export function NewRoom() {
     // Estado da nova sala que está sendo criada
     const [newRoom, setNewRoom] = useState('');
 
+    // Estado da url do background da sala
+    const [backgroundRoom, setBackgroundRoom] = useState('');
+
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
 
+        console.log(backgroundRoom);
         if(newRoom.trim() === '') { //trim() => remove espaços em branco da string
             return;
         }
@@ -33,10 +37,11 @@ export function NewRoom() {
 
         const firebaseRoom = await roomRef.push({
             title: newRoom, 
-            authorId: user?.id
+            authorId: user?.id, 
+            background: backgroundRoom
         });
 
-        history.push(`/rooms/${firebaseRoom.key}`);
+        history.push(`/admin/rooms/${firebaseRoom.key}`);
     }
 
     return (
@@ -56,6 +61,12 @@ export function NewRoom() {
                             placeholder="Nome da sala"
                             onChange={event => setNewRoom(event.target.value)}
                             value={newRoom}
+                        />
+                        <input
+                            type="text"
+                            placeholder="(Opcional) Link do Background da Sala"
+                            onChange={event => setBackgroundRoom(event.target.value)}
+                            value={backgroundRoom}
                         />
                         <Button type="submit">
                             Criar sala

@@ -9,6 +9,7 @@ type RoomCodeProps = {
 export function RoomCode(props: RoomCodeProps) {
     function copyRoomCodeToClipboard() {
         navigator.clipboard.writeText(props.code);
+        alert(`Código da sala copiado!\n${props.code}`);
     }
     return (
         <button className="room-code" onClick={copyRoomCodeToClipboard}>
@@ -16,6 +17,7 @@ export function RoomCode(props: RoomCodeProps) {
                 <img src={copyImg} alt="Copy room code" />
             </div>
             <span>Sala #{props.code}</span>
+            <span className="tooptipText">Clique para copiar o código!</span>
         </button>
     )
 }
